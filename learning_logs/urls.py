@@ -15,6 +15,9 @@ urlpatterns= [
 
     #Home Page
     path('', views.index, name='index'),
-    
+
+
+    #the Topics page
+    path('topics/', views.topics, name='topics')
 
 ] 
