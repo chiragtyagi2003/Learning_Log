@@ -14,3 +14,11 @@ def topics(request):
     context = {'topics': topics}
 
     return render(request, 'learning_logs/topics.html', context)
+
+def topic(request,topic_id):
+    """Individual topic's page, shows all the entries assoicated with a particulau topic"""
+    topic = Topic.objects.get(id=topic_id)
+    entries = topic.entry_set.order_by('-date_added')
+    context = {'topic':topic, 'entries': entries}
+    return render(request, 'learning_logs/topic.html', context)
+
