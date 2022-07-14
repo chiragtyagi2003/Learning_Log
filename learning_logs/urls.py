@@ -18,6 +18,10 @@ urlpatterns= [
 
 
     #the Topics page
-    path('topics/', views.topics, name='topics')
+    path('topics/', views.topics, name='topics'),
+
+    #particular topic page
+    path('topics/<int:topic_id>/', views.topic, name='topic'),
+
 
 ] 
