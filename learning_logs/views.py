@@ -25,7 +25,7 @@ def topic(request,topic_id):
 
 def new_topic(request):
     """Adds a new topic"""
-    if request.method != 'post':
+    if request.method != 'POST':
         # no data submitted, create a blank form
         #make a form
         form = TopicForm()
