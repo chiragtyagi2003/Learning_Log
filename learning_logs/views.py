@@ -56,7 +56,7 @@ def new_entry(request, topic_id):
     """Adds an entry to a particular topic"""
 
     #retreive the topic and store it in a var using the topic id
-    topic = Topic.Objects.get(id=topic_id)
+    topic = Topic.objects.get(id=topic_id)
 
     #if the request method is not POST
     if request.method != 'POST':
