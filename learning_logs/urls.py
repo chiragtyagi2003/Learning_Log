@@ -23,5 +23,7 @@ urlpatterns= [
     #particular topic page
     path('topics/<int:topic_id>/', views.topic, name='topic'),
 
+    #page for adding a new topic
+    path('new_topic/', views.new_topic, name='new_topic')
 
 ] 
