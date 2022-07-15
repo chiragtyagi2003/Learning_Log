@@ -1,0 +1,41 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+    <p>
+        <!--making the topic the heading as well as link back 
+            to the topic's page-->
+        <a href = "{% url 'learning_logs:topic' topic.id %}">{{ topic }}
+        </a>
+    </p>
+
+    <p>Add a new entry:</p>
+
+    <!-- defining the html form 
+        action tells where to send
+        the date which is stored
+        in the form
+        and method tells
+        which type of request to 
+        make
+    -->
+
+    <form action = "{url 'learning_logs:new_entry' topic.id}" method ='post'>
+
+        <!-- this token provides security to form
+            from unauhtorizeda access. 
+            its called Sross-Site Request Forgery 
+        -->
+        {% csrf_token %}
+
+        <!-- this tag makes django to present 
+            all fields on the page in paragraph
+            manner 
+        -->
+        {{ form.as_p}}
+
+        <!--this tags makes a button to submit the form-->
+        <button name='submit'>Add entry</button>
+    </form>
+
+{% endblock content %}
