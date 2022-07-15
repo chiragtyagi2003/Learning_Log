@@ -20,7 +20,7 @@
         make
     -->
 
-    <form action = "{url 'learning_logs:new_entry' topic.id}" method ='post'>
+    <form action = "{% url 'learning_logs:new_entry' topic.id %}" method ='post'>
 
         <!-- this token provides security to form
             from unauhtorizeda access. 
