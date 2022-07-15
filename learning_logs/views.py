@@ -39,7 +39,7 @@ def new_topic(request):
         form = TopicForm(data=request.POST)
 
         #check if the form meet requirements
-        if (form.is_valid()):
+        if form.is_valid():
 
             #save the form
             form.save()
