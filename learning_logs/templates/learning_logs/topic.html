@@ -5,6 +5,13 @@
     <p>Topics: {{ topic }}</p>
 
     <p>Entries:</p>
+    
+    <!-- adding the link
+        to make a new entry
+    -->
+    <p>
+        <a href="{% url 'learning_logs:new_entry' topic.id %}">Add a new entry</a>
+    </p>
     <ul>
         {% for entry in entries %}
             <li>
