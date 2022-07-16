@@ -1,0 +1,34 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+    <!--
+        checking if there is an 
+        error in credentials.
+    -->
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endfor %}
+
+    <!--
+        if the credentials are correct
+        define a html form with post method
+        and action - form data should be sent 
+        to login view function
+    -->
+    <form action="{% url 'users:login' %}" method = "post">
+    
+        <!-- tag for security -->
+        {% csrf_token %}
+
+        <!--tag to show the form -->
+        {{ form.as_p }}
+
+        <button name="submit">Log in</button>
+
+        <!--tag to redirect user after logging in-->
+        <input type="hidden" name="next"
+          value="{% url 'learning_logs:index' %}"/>
+    </form>
+
+{% endblock content %}
