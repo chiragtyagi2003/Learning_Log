@@ -19,8 +19,13 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),    
 
-    #URL pattern for home page
+    #include the links/urls from the app users
+    path('users/', include('users.urls')),
+    
+    #include the links/urls from the app learning_logs
     path('',include('learning_logs.urls')),
+
+
     
 
 ]
