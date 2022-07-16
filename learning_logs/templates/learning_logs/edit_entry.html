@@ -16,7 +16,7 @@
         method tells what type of request
         to send
     -->
-    <form action = "{url 'learning_logs:edit_entry' entry.id}" method = 'post'>
+    <form action = "{% url 'learning_logs:edit_entry' entry.id %}" method = 'post'>
 
         <!-- tag for security-->
         {% csrf_token %}
