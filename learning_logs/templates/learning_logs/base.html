@@ -13,10 +13,11 @@
         <br>
         <a href="{% url 'users:logout' %}">Log out</a>
 
-    <!--if the user is not authenticated, show him the link to log in-->
+    <!--if the user is not authenticated, show him the link to log in or register-->
     {% else %}
         <br>
-        <br>    
+        <br>  
+        <a href="{% url 'users:register' %}">Register</a>/ 
         <a href="{% url 'users:login' %}">Log in</a>
     {% endif %}
 
