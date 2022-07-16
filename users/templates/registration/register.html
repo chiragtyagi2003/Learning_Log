@@ -1,0 +1,25 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+    <!-- 
+        the html form
+        with post method
+        and form data is sent to 
+        register view function
+        by action
+    -->
+    <form action="{% url 'users:register' %}" method="post">
+
+        <!-- security tag -->
+        {% csrf_token %}
+
+        <!-- tag to display the form -->
+        {{ form.as_p }}
+
+        <button name="submit">Register</button>
+        <!-- tag to redirect the user after clicking the registration button-->
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
+    </form>
+
+{% endblock content %}
