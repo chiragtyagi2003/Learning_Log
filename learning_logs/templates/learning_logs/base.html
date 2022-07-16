@@ -5,10 +5,14 @@
     
     <!-- if the user is authenticated, greet him/her -->
     {% if user.is_authenticated %}
+        <br>
+        <br>
         Hello, {{ user.username }}.
 
     <!--if the user is not authenticated, show him the link to log in-->
     {% else %}
+        <br>
+        <br>    
         <a href="{% url 'users:login' %}">Log in</a>
     {% endif %}
 
