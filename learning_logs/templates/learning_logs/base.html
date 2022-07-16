@@ -2,6 +2,16 @@
     <a href = "{% url 'learning_logs:index' %}">Learning Log</a>
     <br>
     <a href = "{% url 'learning_logs:topics' %}">List of All Topics</a>
+    
+    <!-- if the user is authenticated, greet him/her -->
+    {% if user.is_authenticated %}
+        Hello, {{ user.username }}.
+
+    <!--if the user is not authenticated, show him the link to log in-->
+    {% else %}
+        <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
+
 </p>
 
 
