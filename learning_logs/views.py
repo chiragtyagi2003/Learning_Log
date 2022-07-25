@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -8,7 +9,8 @@ def index(request):
     """The home page for Learning_Logs."""
     return render(request, 'learning_logs/index.html')
 
-
+#the decorator to allow only the registered users to access the topics page
+@login_required
 def topics(request):
     """The topics page."""
     topics = Topic.objects.order_by('date_added')
