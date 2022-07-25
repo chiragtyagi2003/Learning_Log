@@ -9,7 +9,8 @@ def index(request):
     """The home page for Learning_Logs."""
     return render(request, 'learning_logs/index.html')
 
-#the decorator to allow only the registered users to access the topics page
+#the decorator to allow only the registered users to access the following page
+#if not registered the user is redirected to login page.
 @login_required
 def topics(request):
     """The topics page."""
@@ -18,6 +19,10 @@ def topics(request):
 
     return render(request, 'learning_logs/topics.html', context)
 
+
+#the decorator to allow only the registered users to access the following page
+#if not registered the user is redirected to login page.
+@login_required
 def topic(request,topic_id):
     """Individual topic's page, shows all the entries assoicated with a particulau topic"""
     topic = Topic.objects.get(id=topic_id)
@@ -25,6 +30,10 @@ def topic(request,topic_id):
     context = {'topic':topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
 
+
+#the decorator to allow only the registered users to access the following page
+#if not registered the user is redirected to login page.
+@login_required
 def new_topic(request):
     """Adds a new topic"""
     if request.method != 'POST':
@@ -54,6 +63,9 @@ def new_topic(request):
     return render(request, 'learning_logs/new_topic.html', context)
 
 
+#the decorator to allow only the registered users to access the following page
+#if not registered the user is redirected to login page.
+@login_required
 def new_entry(request, topic_id):
     """Adds an entry to a particular topic"""
 
@@ -101,6 +113,10 @@ def new_entry(request, topic_id):
     context = {'topic':topic, 'form':form}
     return render(request, 'learning_logs/new_entry.html', context)
 
+
+#the decorator to allow only the registered users to access the following page
+#if not registered the user is redirected to login page.
+@login_required
 def edit_entry(request, entry_id):
     """Edit an existing entry"""
 
