@@ -58,9 +58,17 @@ def new_topic(request):
 
         #check if the form meet requirements
         if form.is_valid():
+            
+
+            #do not save the form yet to DB
+            new_topic = form.save(commit=False)
+
+            #now give the value for the topic's
+            #owne attribute
+            new_topic.owner = request.user
 
             #save the form
-            form.save()
+            new_topic.save()
 
             #redirect the user to the topics page
             return redirect('learning_logs:topics')
