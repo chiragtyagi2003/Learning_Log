@@ -32,7 +32,7 @@ def topic(request,topic_id):
     #the current user
     if topic.owner != request.user:
         raise Http404
-        
+
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic':topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
@@ -134,6 +134,11 @@ def edit_entry(request, entry_id):
     #retrieve the topic associated with the
     # desired entry
     topic = entry.topic
+
+    #restrict access to edit entry page of a topic
+    #using URL by un-auth user
+    if topic.owner != request.user:
+        raise Http404
 
 
     #if the request is not post
