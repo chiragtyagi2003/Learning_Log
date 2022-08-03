@@ -17,4 +17,26 @@
         {% bootstrap_javascript jquery='full' %}
 
     </head>
-    
+
+<!--the body tag contains all the content users will see on the web page-->
+    <body>
+        <!--top naviagtion bar -->
+        
+        <!--this elements contains all the pages's navigation link section-->
+        <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+
+            <!--set the app name to appear at the far left of the nav bar
+                and make it a link to the home page-->
+            
+                <a class="navbar-brand" href="{% url 'learning_logs:index' %}">
+                    Learning Log
+                </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class = "navbar-toggler-icon"></span>
+        </button>
+                
+        </nav>
+    </body>
