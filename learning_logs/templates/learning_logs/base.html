@@ -1,27 +1,20 @@
-<p>
-    <a href = "{% url 'learning_logs:index' %}">Learning Log</a>
-    <br>
-    <a href = "{% url 'learning_logs:topics' %}">List of All Topics</a>
+{% load bootstrap4 %}
+
+<!doctype html>
+<html lang="en">
+
+<!--the head of the html file doesn't contain any content
+    it  just tells the browsere what it needs to know 
+    what it needs to know to display the content-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Learning Log</title>
+
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
+
+    </head>
     
-    <!-- if the user is authenticated, greet him/her -->
-    {% if user.is_authenticated %}
-        <br>
-        <br>
-        Hello, {{ user.username }}.
-
-        <!-- link to logout, if the user was logged in-->
-        <br>
-        <a href="{% url 'users:logout' %}">Log out</a>
-
-    <!--if the user is not authenticated, show him the link to log in or register-->
-    {% else %}
-        <br>
-        <br>  
-        <a href="{% url 'users:register' %}">Register</a>/ 
-        <a href="{% url 'users:login' %}">Log in</a>
-    {% endif %}
-
-</p>
-
-
-{% block content %}{% endblock content %}
