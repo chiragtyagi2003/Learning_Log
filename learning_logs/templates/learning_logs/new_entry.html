@@ -1,4 +1,10 @@
 {% extends "learning_logs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+    <h4>Add a new Entry</h4>
+{% endblock page_header %}
+
 
 {% block content %}
 
@@ -9,8 +15,6 @@
         </a>
     </p>
 
-    <p>Add a new entry:</p>
-
     <!-- defining the html form 
         action tells where to send
         the date which is stored
@@ -20,7 +24,7 @@
         make
     -->
 
-    <form action = "{% url 'learning_logs:new_entry' topic.id %}" method ='post'>
+    <form action = "{% url 'learning_logs:new_entry' topic.id %}" method ='post' class="form">
 
         <!-- this token provides security to form
             from unauhtorizeda access. 
@@ -28,14 +32,15 @@
         -->
         {% csrf_token %}
 
-        <!-- this tag makes django to present 
+        <!-- this tag makes django-bootstrap to present 
             all fields on the page in paragraph
             manner 
         -->
-        {{ form.as_p}}
-
+        {% bootstrap_form form %}
+        {% buttons %}
         <!--this tags makes a button to submit the form-->
-        <button name='submit'>Add entry</button>
+            <button name='submit' class="btn btn-primary">Add entry</button>
+        {% endbuttons %}
     </form>
 
 {% endblock content %}
