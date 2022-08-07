@@ -1,4 +1,9 @@
 {% extends "learning_logs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+    <h4>Edit entry:</h4>
+{% endblock page_header %}
 
 {% block content %}
 
@@ -8,15 +13,13 @@
         <a href="{% url 'learning_logs:topic' topic.id%}">{{ topic }}</a>
     </p>
 
-    <p>Edit entry:</p>
-
     <!-- making an html form
         action tell where to send the 
         stored data,
         method tells what type of request
         to send
     -->
-    <form action = "{% url 'learning_logs:edit_entry' entry.id %}" method = 'post'>
+    <form action = "{% url 'learning_logs:edit_entry' entry.id %}" method = 'post' class="form">
 
         <!-- tag for security-->
         {% csrf_token %}
@@ -24,10 +27,12 @@
         <!-- tag for diplaying the form
             as paragraph
         -->
-        {{ form.as_p }}
+        {% bootstrap_form form %}
 
+        {% buttons %}
         <!--button to submit-->
-        <button name="submit">Edit entry</button>
+            <button name="submit">Edit entry</button>
+        {% endbuttons %}
     </form>
 
 {% endblock content %}
