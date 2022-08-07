@@ -1,4 +1,10 @@
 {% extends "learning_logs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+    <h4>Register</h4>
+{% endblock page_header %}
+
 
 {% block content %}
 
@@ -9,15 +15,18 @@
         register view function
         by action
     -->
-    <form action="{% url 'users:register' %}" method="post">
+    <form action="{% url 'users:register' %}" method="post" class="form">
 
         <!-- security tag -->
         {% csrf_token %}
 
         <!-- tag to display the form -->
-        {{ form.as_p }}
+        {% bootstrap_form form %}
 
-        <button name="submit">Register</button>
+        {% buttons %}
+            <button name="submit">Register</button>
+        {% endbuttons %}
+        
         <!-- tag to redirect the user after clicking the registration button-->
         <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
     </form>
