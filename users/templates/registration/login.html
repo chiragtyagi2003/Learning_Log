@@ -1,31 +1,26 @@
 {% extends "learning_logs/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+    <h2>Log in to your account.</h2>
+{% endblock page_header %}
 
 {% block content %}
 
-    <!--
-        checking if there is an 
-        error in credentials.
-    -->
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
+   <!--django-bootstrap manages credentials validation on its own, 
+        no need for additional code -->
 
-    <!--
-        if the credentials are correct
-        define a html form with post method
-        and action - form data should be sent 
-        to login view function
-    -->
-    <form action="{% url 'users:login' %}" method = "post">
+    <form class="form" action="{% url 'users:login' %}" method = "post">
     
         <!-- tag for security -->
         {% csrf_token %}
 
         <!--tag to show the form -->
-        {{ form.as_p }}
-
-        <button name="submit">Log in</button>
-
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">Log in</button>
+        {% endbuttons %}
+        
         <!--tag to redirect user after logging in-->
         <input type="hidden" name="next"
           value="{% url 'learning_logs:index' %}"/>
