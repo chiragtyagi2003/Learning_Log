@@ -38,5 +38,53 @@
                 <span class = "navbar-toggler-icon"></span>
         </button>
                 
+
+        <!--collapsed nav bar for narrow screens-->
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'learning_logs:topics' %}">
+                            Topics
+                        </a>
+                    </li>
+                </ul>
+
+                <!--further part of the navigation bar-->
+                <ul class = "navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class = "nav-item">
+                            <span class="navbar-text">Hello, {{user.username }}.</span>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:logout' %}">LogOut</a>
+
+                        </li>
+
+                        {% else %}
+                        <li class = "nav-item">
+                            <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:login' %}">LogIn</a>
+                        </li>
+                        {% endif %}
+                </ul>    
+            </div>
         </nav>
+
+        <!-- the main part of the page-->
+
+        <main role="main" class="container">
+            <div class="pb-2 mb-2 border-bottom">
+                {% block page_header %}{% endblock page_header %}
+            </div>
+
+            <div>
+                {%block content %}{% endblock content %}
+            </div>
+        </main>
     </body>
+</html>
