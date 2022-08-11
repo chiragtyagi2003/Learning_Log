@@ -16,6 +16,8 @@ urlpatterns= [
     #Home Page
     path('', views.index, name='index'),
 
+    #Logged in user home
+    path('user_home', views.user_home, name='user_home'),
 
     #the Topics page
     path('topics/', views.topics, name='topics'),

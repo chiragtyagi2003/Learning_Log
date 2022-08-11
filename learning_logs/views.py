@@ -6,7 +6,7 @@ from django.http import Http404
 # Create your views here.
 
 def index(request):
-    """The home page for Learning_Logs."""
+    """The home page for ilog."""
     return render(request, 'learning_logs/index.html')
 
 #the decorator to allow only the registered users to access the following page
@@ -19,6 +19,11 @@ def topics(request):
     context = {'topics': topics}
 
     return render(request, 'learning_logs/topics.html', context)
+
+
+def user_home(request):
+    """The home page for logged in users"""
+    return render(request, 'learning_logs/user_home.html')
 
 
 #the decorator to allow only the registered users to access the following page
