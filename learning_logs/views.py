@@ -20,7 +20,7 @@ def topics(request):
 
     return render(request, 'learning_logs/topics.html', context)
 
-
+@login_required
 def user_home(request):
     """The home page for logged in users"""
     return render(request, 'learning_logs/user_home.html')
