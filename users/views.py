@@ -31,7 +31,7 @@ def register(request):
             login(request, new_user)
 
             #redirect the user to the home page
-            return redirect('learning_logs:index')
+            return redirect('learning_logs:user_home')
 
     #display the form as per the above criterias are met
     context = {'form':form}
